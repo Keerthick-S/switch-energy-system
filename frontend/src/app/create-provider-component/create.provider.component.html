@@ -1,0 +1,18 @@
+<div class="main-container">
+    <div class="container">
+        <p class="add-provider">ADD PROVIDER</p>
+        <form [formGroup]="providerDetails" (ngSubmit)="addProvider()">
+            <div class="input">   
+                <input type="text" class="form-control" formControlName="name" placeholder="Provider Name">
+                <!-- <mat-error *ngIf="">Enter the Provider Name</mat-error> -->
+            </div>
+            <div class="input">   
+                <input type="number" class="form-control" formControlName="rate" placeholder="Rate">
+                <!-- <mat-error>Enter the Rate</mat-error> -->
+            </div>
+            <div class="input">   
+                <button type="submit" [disabled]="providerDetails.invalid" class="form-control submit">Add</button>
+            </div>
+        </form>
+    </div>
+</div>

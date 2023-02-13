@@ -1,0 +1,28 @@
+<app-toolbar-component></app-toolbar-component>
+<div class="table">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">S.NO</th>
+            <th scope="col">PROVIDER NAME</th>
+            <th scope="col">RATE</th>
+            <th scope="col">ENABLE or DISABLE</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let provider of providers;index as i">
+          <tr>
+            <th scope="row">{{i+1}}</th>
+            <td>{{provider.name}}</td>
+            <td>{{provider.rate}}</td>
+            <td>
+                <button *ngIf="provider.enable" class="btn btn-dark" (click)="disableProvider(provider.name, i)">
+                    Disable
+                </button>
+                <button *ngIf="provider.enable == false" class="btn btn-light" (click)="enableProvider(provider.name, i)">
+                    Enable
+                </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>

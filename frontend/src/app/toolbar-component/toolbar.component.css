@@ -1,0 +1,14 @@
+.space-toolbar {
+    flex: 1 1 auto;
+  }
+
+.tool-bar {
+    background: #000428;
+    background: -webkit-linear-gradient(to right, #004e92, #000428);
+    background: linear-gradient(to right, #004e92, #000428);
+    color: white;
+}
+
+.account-circle-icon {
+    font-size: 30px;
+}
