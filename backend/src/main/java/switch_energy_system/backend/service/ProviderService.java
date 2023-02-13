@@ -15,20 +15,18 @@ public class ProviderService {
     @Autowired
     private SmartMeterService smartMeterService;
 
-    public String createProvider(Provider provider) {
+    public void createProvider(Provider provider) {
         provider.setEnable(true);
-        return providerRepo.createProvider(provider);
+         providerRepo.createProvider(provider);
     }
 
-    public String enableProvider(String providerName) {
+    public void enableProvider(String providerName) {
         providerRepo.enableDisabledProvider(providerName, true);
-        return "Enabled successfully";
     }
 
-    public String disableProvider(String providerName) {
+    public void disableProvider(String providerName) {
         providerRepo.enableDisabledProvider(providerName, false);
         smartMeterService.switchSmartMeter(providerName);
-        return "Disabled successfully";
     }
     public List<Provider> getAllProvider() {
         return providerRepo.allProvider();

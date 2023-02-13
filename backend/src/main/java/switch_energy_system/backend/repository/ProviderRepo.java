@@ -15,9 +15,8 @@ public class ProviderRepo {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public String createProvider(Provider provider) {
+    public void createProvider(Provider provider) {
         mongoTemplate.save(provider);
-        return "Provider added successfully";
     }
     public void enableDisabledProvider(String providerName, boolean isEnable) {
         mongoTemplate.findAndModify(Query.query(Criteria.where("name").is(providerName)), new Update().set("isEnable", isEnable), Provider.class);

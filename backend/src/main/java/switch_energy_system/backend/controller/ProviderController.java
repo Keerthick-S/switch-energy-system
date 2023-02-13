@@ -6,6 +6,7 @@ import switch_energy_system.backend.pojo.Provider;
 import switch_energy_system.backend.service.ProviderService;
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("provider")
 public class ProviderController {
@@ -14,18 +15,18 @@ public class ProviderController {
     private ProviderService providerService;
 
     @PostMapping
-    public String createProvider(@RequestBody Provider provider) {
-        return providerService.createProvider(provider);
+    public void createProvider(@RequestBody Provider provider) {
+        providerService.createProvider(provider);
     }
 
     @PutMapping("/enable/{providerName}")
-    public String enableProvider(@PathVariable String providerName) {
-        return providerService.enableProvider(providerName);
+    public void enableProvider(@PathVariable String providerName) {
+        providerService.enableProvider(providerName);
     }
 
     @PutMapping("/disable/{providerName}")
-    public String disableProvider(@PathVariable String providerName) {
-        return providerService.disableProvider(providerName);
+    public void disableProvider(@PathVariable String providerName) {
+        providerService.disableProvider(providerName);
     }
 
     @GetMapping

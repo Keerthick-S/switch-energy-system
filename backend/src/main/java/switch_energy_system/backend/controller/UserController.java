@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import switch_energy_system.backend.pojo.User;
 import switch_energy_system.backend.service.UserService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("user")
 public class UserController {

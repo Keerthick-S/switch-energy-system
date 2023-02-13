@@ -19,7 +19,7 @@ public class UserRepo {
 
     public String createUser(User user) {
         mongoTemplate.save(user);
-        smartMeterService.newSmartMeter(user.getId());
+        smartMeterService.newSmartMeter(user.getId(), user.getName());
         return "created successfully";
     }
     public void switchProvider(String smartMeterId, String providerName) {
