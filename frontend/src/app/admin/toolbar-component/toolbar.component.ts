@@ -13,14 +13,14 @@ export class ToolbarComponent {
     }
 
     navigateSmartmeterPage(): void {
-        this.router.navigateByUrl('smartmeter');
+        this.router.navigateByUrl('admin/smartmeter');
     }
 
     navigateProviderPage() : void {
-        this.router.navigateByUrl('provider');
+        this.router.navigateByUrl('admin/provider');
     }
 
     navigateAddProvider() : void {
-        this.router.navigateByUrl('add-provider')
+        this.router.navigateByUrl('admin/add-provider')
     }
 }
