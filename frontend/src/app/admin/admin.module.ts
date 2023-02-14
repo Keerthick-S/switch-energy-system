@@ -6,15 +6,8 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { CreateProviderComponent } from './create-provider-component/create.provider.component';
 import { ProviderComponent } from './provider-component/provider.component';
 import { SmartmeterComponent } from './smartmeter-component/smartmeter.component';
-
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatSelectModule } from '@angular/material/select';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { ToolbarComponent } from './toolbar-component/toolbar.component';
-
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [
@@ -26,13 +19,8 @@ import { ToolbarComponent } from './toolbar-component/toolbar.component';
   imports: [
     CommonModule,
     HttpClientModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatMenuModule,
+    MaterialModule,
     ReactiveFormsModule,
-    MatSelectModule,
-    MatInputModule,
     AdminRoutingModule
   ]
 })

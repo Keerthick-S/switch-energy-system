@@ -1,0 +1,16 @@
+<mat-toolbar class="tool-bar">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="openDialog()">Add SmartMeter</button>
+    </mat-menu>
+    <span>Switch Energy System</span>
+    <span class="space-toolbar"></span>
+    <button mat-icon-button [matMenuTriggerFor]="logout">
+      <mat-icon class="account-circle-icon">account_circle</mat-icon>
+    </button>
+    <mat-menu #logout="matMenu">
+        <button mat-menu-item class="logout-btn">Logout</button>
+      </mat-menu>
+    </mat-toolbar>

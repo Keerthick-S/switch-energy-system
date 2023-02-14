@@ -1,0 +1,23 @@
+<toolbar-component></toolbar-component>
+<div class="table">
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">S.NO</th>
+            <th scope="col">SMARTMETER ID</th>
+            <th scope="col">PROVIDER</th>
+            <th scope="col">READING</th>
+            <th scope="col">TOTAL AMOUNTS</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let smartmeter of smartMeters;index as i">
+          <tr>
+            <td>{{i+1}}</td>
+            <td>{{smartmeter.id}}</td>
+            <td>{{smartmeter.provider}}</td>
+            <td>{{smartmeter.reading}}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
