@@ -23,4 +23,9 @@ public class UserController {
                                 @PathVariable("providerName") String providerName) {
         userService.switchProvider(smartMeterId, providerName);
     }
+
+    @GetMapping("/{phoneNumber}")
+    public User getUser(@PathVariable long phoneNumber) {
+        return userService.getUser(phoneNumber);
+    }
 }

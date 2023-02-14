@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import switch_energy_system.backend.pojo.SmartMeter;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class SmartMeterRepo {
@@ -33,5 +34,9 @@ public class SmartMeterRepo {
 
     public void smartMeterSetStatus(String smartMeterId, String status) {
         mongoTemplate.findAndModify(Query.query(Criteria.where("id").is(smartMeterId)), new Update().set("enrollStatus", status), SmartMeter.class);
+    }
+
+    public List<SmartMeter> getUserSmartMeter(String userId) {
+        return mongoTemplate.stream(Query.query(Criteria.where("userId").is(userId)), SmartMeter.class).collect(Collectors.toList());
     }
 }

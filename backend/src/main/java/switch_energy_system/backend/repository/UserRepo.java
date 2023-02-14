@@ -25,4 +25,8 @@ public class UserRepo {
     public void switchProvider(String smartMeterId, String providerName) {
         mongoTemplate.findAndModify(Query.query(Criteria.where("id").is(smartMeterId)), new Update().set("provider", providerName), SmartMeter.class);
     }
+
+    public User getUser(long phoneNumber) {
+        return mongoTemplate.findOne(Query.query(Criteria.where("phoneNumber").is(phoneNumber)), User.class);
+    }
 }

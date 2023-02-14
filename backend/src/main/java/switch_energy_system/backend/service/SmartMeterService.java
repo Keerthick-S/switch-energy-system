@@ -41,4 +41,12 @@ public class SmartMeterService {
     public void smartMeterSetStatus(String id , String status) {
         smartMeterRepo.smartMeterSetStatus(id , status);
     }
+
+    public List<SmartMeter> getUserSmartMeter(String userId) {
+        return smartMeterRepo.getUserSmartMeter(userId);
+    }
+
+    public void createSmartMeter(SmartMeter smartMeter) {
+        smartMeterRepo.newSmartMeter(smartMeter.getUserId(), smartMeter.getProvider(), smartMeter.getUserName());
+    }
 }

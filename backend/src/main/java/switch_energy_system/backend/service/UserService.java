@@ -15,4 +15,8 @@ public class UserService {
     public void switchProvider(String smartMeterId, String providerName) {
         userRepo.switchProvider(smartMeterId, providerName);
     }
+
+    public User getUser(long phoneNumber) {
+        return userRepo.getUser(phoneNumber);
+    }
 }
