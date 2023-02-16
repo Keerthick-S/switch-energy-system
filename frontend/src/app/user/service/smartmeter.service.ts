@@ -22,4 +22,8 @@ export class SmartMeterService {
     addSmartMeter(userDetail : userDetails) : Observable<object> {
         return this.http.post<object>(`${this.BASE_URL}`, userDetail);
     }
+
+    switchSmartMeter(smartMeterId : string, providerName : string) : Observable<object> {
+        return this.http.put(`${this.BASE_URL}/${providerName}/${smartMeterId}`, null);
+    }
 }

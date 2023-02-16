@@ -29,12 +29,10 @@ export class ToolbarComponent implements OnInit {
     }
 
     ngOnInit(): void {
-      this.userService.getUser(9150500151).subscribe(res => {
-        this.user = res;
-      })
+      this.getUserSmartMeters();
     }
 
-    openDialog(): void {
+    addSmartMeter(): void {
       const dialogRef = this.dialog.open(AddSmartmeterComponent);
   
       dialogRef.afterClosed().subscribe(result => {
@@ -42,8 +40,16 @@ export class ToolbarComponent implements OnInit {
           this.userDetail.userId = this.user.id;
           this.userDetail.userName = this.user.name;
           this.userDetail.provider = result;
-          this.smartmeterService.addSmartMeter(this.userDetail).subscribe();
+          this.smartmeterService.addSmartMeter(this.userDetail).subscribe(res => {
+            this.getUserSmartMeters();
+          });
         }
       });
+    }
+
+    getUserSmartMeters() : void {
+      this.userService.getUser(9150500151).subscribe(res => {
+        this.user = res;
+      })
     }
 }  

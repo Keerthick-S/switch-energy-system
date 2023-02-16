@@ -16,7 +16,11 @@
             <td>{{i+1}}</td>
             <td>{{smartmeter.id}}</td>
             <td>{{smartmeter.provider}}</td>
-            <td></td>
+            <td>
+              <button class="btn btn-dark" (click)="switchSmartMeter(smartmeter.id)">
+                Switch
+              </button>
+            </td>
             <td>{{smartmeter.reading}}</td>
             <td></td>
           </tr>
