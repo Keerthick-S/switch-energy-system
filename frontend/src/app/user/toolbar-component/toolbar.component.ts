@@ -38,10 +38,12 @@ export class ToolbarComponent implements OnInit {
       const dialogRef = this.dialog.open(AddSmartmeterComponent);
   
       dialogRef.afterClosed().subscribe(result => {
-        this.userDetail.userId = this.user.id;
-        this.userDetail.userName = this.user.name;
-        this.userDetail.provider = result;
-        this.smartmeterService.addSmartMeter(this.userDetail).subscribe();
+        if(result) {
+          this.userDetail.userId = this.user.id;
+          this.userDetail.userName = this.user.name;
+          this.userDetail.provider = result;
+          this.smartmeterService.addSmartMeter(this.userDetail).subscribe();
+        }
       });
     }
 }  

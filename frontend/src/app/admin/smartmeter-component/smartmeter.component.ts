@@ -16,14 +16,18 @@ export class SmartmeterComponent implements OnInit{
     }
 
     ngOnInit(): void {
-        this.smartmeterService.getPendingSmartmeter().subscribe(res => {
-            this.smartmeters = res; 
-            console.log(this.smartmeters);
-                       
-        })
+        this.getSmartMeters();
     }
 
     smartmeterStatus(id : string ,status : string) : void {    
-        this.smartmeterService.setSmartMeterStatus(id, status).subscribe();
+        this.smartmeterService.setSmartMeterStatus(id, status).subscribe(res => {
+            this.getSmartMeters();
+        });
+    }
+
+    getSmartMeters() : void {
+        this.smartmeterService.getPendingSmartmeter().subscribe(res => {
+            this.smartmeters = res;  
+        })
     }
 }

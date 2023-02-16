@@ -24,9 +24,7 @@ export class AddSmartmeterComponent implements OnInit {
     ngOnInit(): void {
         this.providerService.getProvider().subscribe(res => {
             this.providers = res;
-        })
-
-        
+        })        
     }
     
     onNoClick(): void {

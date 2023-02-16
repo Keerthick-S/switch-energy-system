@@ -17,7 +17,7 @@ export class UserSmartmeterComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.smartmeterService.getUserSmartmeter('63ebdc04393bf13c788bbb10').subscribe(res => {
+        this.smartmeterService.getUserSmartmeter(9150500151).subscribe(res => {
             this.smartMeters = res;
         })
     }
