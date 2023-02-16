@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 import switch_energy_system.backend.pojo.SmartMeter;
+import switch_energy_system.backend.pojo.SmartMeterReading;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,9 +16,13 @@ import java.util.stream.Collectors;
 public class SmartMeterRepo {
     @Autowired
     private MongoTemplate mongoTemplate;
+    @Autowired
+    private SmartMeterReadingRepo smartMeterReadingRepo;
 
     public void newSmartMeter(String userId, String providerName, String userName) {
-        mongoTemplate.save(new SmartMeter(userId, providerName, userName));
+        SmartMeter smartMeter = new SmartMeter(userId, providerName, userName);
+        mongoTemplate.save(smartMeter);
+        smartMeterReadingRepo.newSmartMeterReading(smartMeter.getId(), smartMeter.getEnrollStatus());
     }
     public String disabledSmartMeter(String userId) {
         mongoTemplate.findAndModify(Query.query(Criteria.where("userId").is(userId)), new Update().set("userId","").set("enrollStatus", "rejected"), SmartMeter.class);
@@ -32,7 +37,7 @@ public class SmartMeterRepo {
         return mongoTemplate.find(Query.query(Criteria.where("enrollStatus").is("pending")), SmartMeter.class);
     }
 
-    public void smartMeterSetStatus(String smartMeterId, String status) {
+    public void setSmartMeterStatus(String smartMeterId, String status) {
         mongoTemplate.findAndModify(Query.query(Criteria.where("id").is(smartMeterId)), new Update().set("enrollStatus", status), SmartMeter.class);
     }
 

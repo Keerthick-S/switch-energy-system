@@ -6,6 +6,7 @@ import switch_energy_system.backend.pojo.Provider;
 import switch_energy_system.backend.pojo.SmartMeter;
 import switch_energy_system.backend.repository.ProviderRepo;
 import switch_energy_system.backend.repository.SmartMeterRepo;
+import switch_energy_system.backend.repository.UserRepo;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +18,12 @@ public class SmartMeterService {
 
     @Autowired
     private ProviderRepo providerRepo;
+
+    @Autowired
+    private SmartMeterReadingService smartMeterReadingService;
+
+    @Autowired
+    private UserRepo userRepo;
 
     public String disabledSmartMeter(String userId) {
         return smartMeterRepo.disabledSmartMeter(userId);
@@ -38,11 +45,12 @@ public class SmartMeterService {
         return smartMeterRepo.getPendingSmartMeters();
     }
 
-    public void smartMeterSetStatus(String id , String status) {
-        smartMeterRepo.smartMeterSetStatus(id , status);
+    public void setSmartMeterStatus(String id , String status) {
+        smartMeterRepo.setSmartMeterStatus(id , status);
     }
 
-    public List<SmartMeter> getUserSmartMeter(String userId) {
+    public List<SmartMeter> getUserSmartMeter(long phoneNumber) {
+        String userId = userRepo.getUser(phoneNumber).getId();
         return smartMeterRepo.getUserSmartMeter(userId);
     }
 

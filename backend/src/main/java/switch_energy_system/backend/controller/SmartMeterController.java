@@ -27,12 +27,12 @@ public class SmartMeterController {
     @PutMapping("/{id}/{status}")
     public void smartMeterSetStatus(@PathVariable("id") String id,
                                     @PathVariable("status") String status) {
-        smartMeterService.smartMeterSetStatus(id, status);
+        smartMeterService.setSmartMeterStatus(id, status);
     }
 
-    @GetMapping("/{userId}")
-    public List<SmartMeter> getUserSmartMeter(@PathVariable String userId) {
-        return smartMeterService.getUserSmartMeter(userId);
+    @GetMapping("/{phoneNumber}")
+    public List<SmartMeter> getUserSmartMeter(@PathVariable long phoneNumber) {
+        return smartMeterService.getUserSmartMeter(phoneNumber);
     }
 
     @PostMapping
