@@ -43,4 +43,8 @@ public class SmartMeterRepo {
     public List<SmartMeter> getUserSmartMeter(String userId) {
         return mongoTemplate.stream(Query.query(Criteria.where("userId").is(userId)), SmartMeter.class).collect(Collectors.toList());
     }
+
+    public void switchProvider(String smartMeterId, String providerName) {
+        mongoTemplate.findAndModify(Query.query(Criteria.where("id").is(smartMeterId)), new Update().set("provider", providerName), SmartMeter.class);
+    }
 }

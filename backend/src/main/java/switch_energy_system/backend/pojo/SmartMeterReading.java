@@ -1,6 +1,7 @@
 package switch_energy_system.backend.pojo;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
@@ -9,6 +10,8 @@ import java.util.List;
 @Document(collection = "smart_meter_reading")
 @Data
 public class SmartMeterReading {
+    @Id
+    private String id;
     private String smartMeterId;
     private boolean enrollStatus;
     private List<Reading> electricityReading;

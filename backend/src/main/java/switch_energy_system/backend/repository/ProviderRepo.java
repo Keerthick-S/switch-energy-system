@@ -25,4 +25,5 @@ public class ProviderRepo {
     public List<Provider> allProvider() {
         return mongoTemplate.findAll(Provider.class);
     }
+
 }

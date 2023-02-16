@@ -33,4 +33,5 @@ public class ProviderController {
     public List<Provider> getAllProvider() {
         return providerService.getAllProvider();
     }
+
 }

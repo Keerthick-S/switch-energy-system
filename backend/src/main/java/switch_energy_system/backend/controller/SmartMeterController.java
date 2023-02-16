@@ -38,9 +38,13 @@ public class SmartMeterController {
     public List<SmartMeter> getUserSmartMeter(@PathVariable long phoneNumber) {
         return smartMeterService.getUserSmartMeter(phoneNumber);
     }
-
     @PostMapping
     public void createSmartMeter(@RequestBody SmartMeter smartMeter) {
         smartMeterService.createSmartMeter(smartMeter);
+    }
+    @PutMapping("/switch-provider/{providerName}/{smartMeterId}")
+    public void switchProvider(@PathVariable("providerName") String providerName,
+                               @PathVariable("smartMeterId") String smartMeterId) {
+        smartMeterService.switchProvider(smartMeterId, providerName);
     }
 }
