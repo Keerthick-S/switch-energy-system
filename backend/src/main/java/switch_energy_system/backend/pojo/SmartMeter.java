@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Document(collection = "smartMeter")
+@Document(collection = "smart_meter")
 @Data
 public class SmartMeter {
     @Id

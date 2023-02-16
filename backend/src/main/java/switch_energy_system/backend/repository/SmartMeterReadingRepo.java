@@ -6,8 +6,12 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
+import switch_energy_system.backend.pojo.Reading;
 import switch_energy_system.backend.pojo.SmartMeter;
 import switch_energy_system.backend.pojo.SmartMeterReading;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Repository
 public class SmartMeterReadingRepo {
@@ -23,6 +27,7 @@ public class SmartMeterReadingRepo {
     }
 
     public void storeReading() {
-        mongoTemplate.updateMulti(Query.query(Criteria.where("enrollStatus").is(true)), new Update().push("reading", 10), SmartMeterReading.class);
+        Reading reading = new Reading(10);
+        mongoTemplate.updateMulti(Query.query(Criteria.where("enrollStatus").is(true)), new Update().push("electricityReading", reading), SmartMeterReading.class);
     }
 }
