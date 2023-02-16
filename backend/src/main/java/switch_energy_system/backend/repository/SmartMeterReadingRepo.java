@@ -18,11 +18,11 @@ public class SmartMeterReadingRepo {
         mongoTemplate.save(new SmartMeterReading(smartMeterId));
     }
 
-    public void setSmartMeterStatus(String id , String status) {
+    public void setSmartMeterStatus(String id , boolean status) {
         mongoTemplate.findAndModify(Query.query(Criteria.where("id").is(id)), new Update().set("enrollStatus", status), SmartMeterReading.class);
     }
 
     public void storeReading() {
-//        mongoTemplate.findAndModify(
+        mongoTemplate.updateMulti(Query.query(Criteria.where("enrollStatus").is(true)), new Update().push("reading", 10), SmartMeterReading.class);
     }
 }

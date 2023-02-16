@@ -14,9 +14,9 @@ import java.util.List;
 public class SmartMeterController {
     @Autowired
     SmartMeterService smartMeterService;
-    @PutMapping("/{userId}/disabled")
-    public String disabledSmartMeter(@PathVariable String userId) {
-        return smartMeterService.disabledSmartMeter(userId);
+    @PutMapping("/{smartMeterId}/disabled")
+    public void disabledSmartMeter(@PathVariable String smartMeterId) {
+        smartMeterService.disabledSmartMeter(smartMeterId);
     }
 
     @GetMapping("/pending-request")
@@ -24,10 +24,14 @@ public class SmartMeterController {
         return smartMeterService.getPendingSmartMeters();
     }
 
-    @PutMapping("/{id}/{status}")
-    public void smartMeterSetStatus(@PathVariable("id") String id,
-                                    @PathVariable("status") String status) {
-        smartMeterService.setSmartMeterStatus(id, status);
+    @PutMapping("/approved/{id}")
+    public void smartMeterSetApprovedStatus(@PathVariable("id") String id) {
+        smartMeterService.setSmartMeterStatus(id, "approved");
+    }
+
+    @PutMapping("/rejected/{id}")
+    public void smartMeterSetRejectStatus(@PathVariable("id") String id) {
+        smartMeterService.setSmartMeterStatus(id, "rejected");
     }
 
     @GetMapping("/{phoneNumber}")

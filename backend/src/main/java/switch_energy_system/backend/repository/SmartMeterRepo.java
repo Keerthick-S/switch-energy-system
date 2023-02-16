@@ -24,9 +24,8 @@ public class SmartMeterRepo {
         mongoTemplate.save(smartMeter);
         smartMeterReadingRepo.newSmartMeterReading(smartMeter.getId(), smartMeter.getEnrollStatus());
     }
-    public String disabledSmartMeter(String userId) {
+    public void disabledSmartMeter(String userId) {
         mongoTemplate.findAndModify(Query.query(Criteria.where("userId").is(userId)), new Update().set("userId","").set("enrollStatus", "rejected"), SmartMeter.class);
-        return "Disabled Successfully";
     }
 
     public void switchSmartMeter(String providerName, String variousProvider) {

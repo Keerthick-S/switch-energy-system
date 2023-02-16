@@ -25,8 +25,9 @@ public class SmartMeterService {
     @Autowired
     private UserRepo userRepo;
 
-    public String disabledSmartMeter(String userId) {
-        return smartMeterRepo.disabledSmartMeter(userId);
+    public void disabledSmartMeter(String smartMeterId) {
+        smartMeterRepo.disabledSmartMeter(smartMeterId);
+        smartMeterReadingService.setSmartMeterStatus(smartMeterId, false);
     }
 
     public void newSmartMeter(String userId, String userName) {
@@ -47,6 +48,7 @@ public class SmartMeterService {
 
     public void setSmartMeterStatus(String id , String status) {
         smartMeterRepo.setSmartMeterStatus(id , status);
+        smartMeterReadingService.setSmartMeterStatus(id, false);
     }
 
     public List<SmartMeter> getUserSmartMeter(long phoneNumber) {

@@ -15,8 +15,13 @@ public class SmartMeterReadingService {
 
     private static final Logger log = LoggerFactory.getLogger(SmartMeterReadingService.class);
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(cron = "1 * * * * *")
     public void storeReading() {
-       log.info("hii");
+        smartMeterReadingRepo.storeReading();
+        log.info("working");
+    }
+
+    public void setSmartMeterStatus(String id, boolean status) {
+        smartMeterReadingRepo.setSmartMeterStatus(id, status);
     }
 }
