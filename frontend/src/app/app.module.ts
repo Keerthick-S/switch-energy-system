@@ -5,9 +5,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppComponent } from './app.component';
 import { SignupComponent } from './auth/signup-component/signup.component';
 import { LoginComponent } from './auth/login-component/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserModule } from './user/user.module';
 import { MaterialModule } from './material/material.module';
+import { TokenInterceptor } from './auth/service/token.interceptor.service';
+
 
 
 @NgModule({
@@ -24,7 +26,7 @@ import { MaterialModule } from './material/material.module';
     UserModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS, useClass:TokenInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

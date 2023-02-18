@@ -10,17 +10,20 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const materialComponent = [
   MatButtonModule,
   MatIconModule,
+  FormsModule,
   MatInputModule,
   MatCardModule,
   MatMenuModule,
   MatSelectModule,
   MatToolbarModule,
   MatDialogModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  ReactiveFormsModule
 ]
 
 @NgModule({

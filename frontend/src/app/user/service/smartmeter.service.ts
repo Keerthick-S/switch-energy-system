@@ -15,8 +15,8 @@ export class SmartMeterService {
     constructor(private http : HttpClient) {
     }
 
-    getUserSmartmeter(phoneNumber : number) : Observable<SmartMeter[]> {
-        return this.http.get<SmartMeter[]>(`${this.BASE_URL}/${phoneNumber}`);
+    getUserSmartmeter(email : string) : Observable<SmartMeter[]> {
+        return this.http.get<SmartMeter[]>(`${this.BASE_URL}/${email}`);
     }
 
     addSmartMeter(userDetail : userDetails) : Observable<object> {

@@ -1,18 +1,25 @@
 <div class="main-container">
     <div class="container">
-        <p class="user-login">USER LOGIN</p>
-        <form>
-            <div class="input">   
-                <input type="text" class="form-control" placeholder="First name">
+        <p class="login">LOGIN</p>
+        <form [formGroup]="loginForm" (ngSubmit)="authenticate()">
+            <div class="form-div">
+                <mat-form-field class="input">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="userName" required>
+                    <mat-error>Enter Valid Email</mat-error>
+                  </mat-form-field>
             </div>
-            <div class="input">   
-                <input type="password" class="form-control" placeholder="Password">
+            <div class="form-div">
+                <mat-form-field class="input">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password" required>
+                    <mat-error>Enter Valid Email</mat-error>
+                  </mat-form-field>
             </div>
-            <div class="input">   
-                <button type="submit" class="form-control submit">Login</button>
+            <div class="form-div">
+                <button type="submit" class="button">Login</button>
             </div>
         </form>
-        <div class="or">______________ OR ______________</div>
-        <div class="signup">Not a User?<a href="/signup" class="register">  Register <i class="fa-solid fa-arrow-right"></i></a></div>
+        <p class="signup-control">Not a User?<a href=""> Signup now</a></p>
     </div>
 </div>

@@ -48,7 +48,7 @@ export class ToolbarComponent implements OnInit {
     }
 
     getUserSmartMeters() : void {
-      this.userService.getUser(9150500151).subscribe(res => {
+      this.userService.getUser("anu@gmail.com").subscribe(res => {
         this.user = res;
       })
     }
