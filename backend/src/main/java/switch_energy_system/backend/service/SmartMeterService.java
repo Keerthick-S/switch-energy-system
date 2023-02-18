@@ -1,6 +1,7 @@
 package switch_energy_system.backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import switch_energy_system.backend.pojo.Provider;
 import switch_energy_system.backend.pojo.SmartMeter;
@@ -23,6 +24,7 @@ public class SmartMeterService {
     private SmartMeterReadingService smartMeterReadingService;
 
     @Autowired
+    @Lazy
     private UserRepo userRepo;
 
     public void disabledSmartMeter(String smartMeterId) {
@@ -50,8 +52,8 @@ public class SmartMeterService {
         smartMeterRepo.setSmartMeterStatus(id , status);
         smartMeterReadingService.setSmartMeterStatus(id, false);
     }
-    public List<SmartMeter> getUserSmartMeter(long phoneNumber) {
-        String userId = userRepo.getUser(phoneNumber).getId();
+    public List<SmartMeter> getUserSmartMeter(String email) {
+        String userId = userRepo.getUserById(email).getId();
         return smartMeterRepo.getUserSmartMeter(userId);
     }
     public void createSmartMeter(SmartMeter smartMeter) {

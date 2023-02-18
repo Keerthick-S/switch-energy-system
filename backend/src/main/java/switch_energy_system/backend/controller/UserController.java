@@ -9,23 +9,21 @@ import switch_energy_system.backend.service.UserService;
 @RestController
 @RequestMapping("user")
 public class UserController {
-
     @Autowired
     private UserService userService;
-
-    @PostMapping
+    @PostMapping("/add-user")
     public String createUser(@RequestBody User user) {
         return userService.createUser(user);
     }
-
     @PutMapping("/{smartMeterId}/switch-provider/{providerName}")
     public void switchProvider(@PathVariable("smartMeterId") String smartMeterId,
                                 @PathVariable("providerName") String providerName) {
         userService.switchProvider(smartMeterId, providerName);
     }
-
-    @GetMapping("/{phoneNumber}")
-    public User getUser(@PathVariable long phoneNumber) {
-        return userService.getUser(phoneNumber);
+    @GetMapping("/{email}")
+    public User getUserById(@PathVariable String email) {
+        return userService.getUserById(email);
     }
+
+
 }

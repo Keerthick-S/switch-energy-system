@@ -29,4 +29,8 @@ public class UserRepo {
     public User getUser(long phoneNumber) {
         return mongoTemplate.findOne(Query.query(Criteria.where("phoneNumber").is(phoneNumber)), User.class);
     }
+
+    public User getUserById(String userName) {
+        return mongoTemplate.findOne(Query.query(Criteria.where("userName").is(userName)), User.class);
+    }
 }

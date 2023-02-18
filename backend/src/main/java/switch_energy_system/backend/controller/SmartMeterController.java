@@ -34,9 +34,9 @@ public class SmartMeterController {
         smartMeterService.setSmartMeterStatus(id, "rejected");
     }
 
-    @GetMapping("/{phoneNumber}")
-    public List<SmartMeter> getUserSmartMeter(@PathVariable long phoneNumber) {
-        return smartMeterService.getUserSmartMeter(phoneNumber);
+    @GetMapping("/{email}")
+    public List<SmartMeter> getUserSmartMeter(@PathVariable String email) {
+        return smartMeterService.getUserSmartMeter(email);
     }
     @PostMapping
     public void createSmartMeter(@RequestBody SmartMeter smartMeter) {
