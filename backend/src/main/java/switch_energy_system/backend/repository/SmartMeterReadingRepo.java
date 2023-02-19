@@ -31,13 +31,13 @@ public class SmartMeterReadingRepo {
         mongoTemplate.updateMulti(Query.query(Criteria.where("enrollStatus").is(true)), new Update().push("electricityReading", reading), SmartMeterReading.class);
     }
 
-    public void getTotalReading() {
+    public List<ReadingRes> getTotalReading(String smartMeterId) {
         UnwindOperation unwindOperation = Aggregation.unwind("electricityReading");
-        MatchOperation matchOperation = Aggregation.match(Criteria.where("enrollStatus").is(true));
+        MatchOperation matchOperation = Aggregation.match(Criteria.where("smartMeterId").is(smartMeterId));
         GroupOperation group = Aggregation.group("smartMeterId").sum("electricityReading.reading").as("totalReading");
 
         Aggregation aggregation = Aggregation.newAggregation(unwindOperation, matchOperation, group);
         AggregationResults<ReadingRes> totalReadings = mongoTemplate.aggregate(aggregation, SmartMeterReading.class, ReadingRes.class);
-//        mongoTemplate.save(totalReadings.getMappedResults());
+        return totalReadings.getMappedResults();
     }
 }

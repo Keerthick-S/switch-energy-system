@@ -32,4 +32,8 @@ public class ProviderService {
         return providerRepo.allProvider();
     }
 
+    public void switchProvider(String smartMeterId, String providerName) {
+        providerRepo.switchProvider(smartMeterId, providerName);
+    }
+
 }

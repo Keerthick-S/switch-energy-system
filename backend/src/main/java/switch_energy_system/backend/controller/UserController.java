@@ -5,15 +5,15 @@ import org.springframework.web.bind.annotation.*;
 import switch_energy_system.backend.pojo.User;
 import switch_energy_system.backend.service.UserService;
 
-@CrossOrigin("*")
 @RestController
 @RequestMapping("user")
+@CrossOrigin("*")
 public class UserController {
     @Autowired
     private UserService userService;
-    @PostMapping("/add-user")
-    public String createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    @PostMapping("/create")
+    public void createUser(@RequestBody User user) throws Exception {
+        userService.createUser(user);
     }
     @PutMapping("/{smartMeterId}/switch-provider/{providerName}")
     public void switchProvider(@PathVariable("smartMeterId") String smartMeterId,

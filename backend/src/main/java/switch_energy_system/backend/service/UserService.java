@@ -12,11 +12,15 @@ public class UserService {
     private UserRepo userRepo;
     @Autowired
     PasswordEncoder passwordEncoder;
-    public String createUser(User user) {
+    @Autowired
+    private PreValidatorService preValidatorService;
+    public void createUser(User user) throws Exception {
+        preValidatorService.checkEmail(user.getEmail());
+        preValidatorService.checkPhoneNumber(user.getPhoneNumber());
         user.setUserName(user.getEmail());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole("User");
-        return userRepo.createUser(user);
+        userRepo.createUser(user);
     }
     public void switchProvider(String smartMeterId, String providerName) {
         userRepo.switchProvider(smartMeterId, providerName);

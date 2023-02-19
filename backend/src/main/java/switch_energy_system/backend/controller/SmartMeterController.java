@@ -34,17 +34,13 @@ public class SmartMeterController {
         smartMeterService.setSmartMeterStatus(id, "rejected");
     }
 
-    @GetMapping("/{email}")
-    public List<SmartMeter> getUserSmartMeter(@PathVariable String email) {
-        return smartMeterService.getUserSmartMeter(email);
+    @GetMapping("/{userId}")
+    public List<SmartMeter> getUserSmartMeter(@PathVariable String userId) {
+        return smartMeterService.getUserSmartMeter(userId);
     }
     @PostMapping
     public void createSmartMeter(@RequestBody SmartMeter smartMeter) {
         smartMeterService.createSmartMeter(smartMeter);
     }
-    @PutMapping("/switch-provider/{providerName}/{smartMeterId}")
-    public void switchProvider(@PathVariable("providerName") String providerName,
-                               @PathVariable("smartMeterId") String smartMeterId) {
-        smartMeterService.switchProvider(smartMeterId, providerName);
-    }
+
 }

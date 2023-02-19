@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import switch_energy_system.backend.dto.ReadingRes;
 import switch_energy_system.backend.pojo.SmartMeterReading;
 import switch_energy_system.backend.repository.SmartMeterReadingRepo;
 
 import javax.management.Query;
+import java.util.List;
 
 @Service
 public class SmartMeterReadingService {
@@ -29,10 +31,8 @@ public class SmartMeterReadingService {
         smartMeterReadingRepo.setSmartMeterStatus(id, status);
     }
 
-    @Scheduled(cron = "1 * * * * *")
-    public void calculateAmount() {
-        smartMeterReadingRepo.getTotalReading();
-        log.info("total reading storing");
+    public List<ReadingRes> calculateTotalReading(String smartMeterId) {
+        return smartMeterReadingRepo.getTotalReading(smartMeterId);
     }
 
 }

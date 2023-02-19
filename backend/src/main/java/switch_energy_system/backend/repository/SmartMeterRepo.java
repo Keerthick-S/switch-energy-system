@@ -27,24 +27,19 @@ public class SmartMeterRepo {
     public void disabledSmartMeter(String userId) {
         mongoTemplate.findAndModify(Query.query(Criteria.where("userId").is(userId)), new Update().set("userId","").set("enrollStatus", "rejected"), SmartMeter.class);
     }
-
     public void switchSmartMeter(String providerName, String variousProvider) {
         mongoTemplate.findAndModify(Query.query(Criteria.where("provider").is(providerName)), new Update().set("provider",variousProvider), SmartMeter.class);
     }
-
     public List<SmartMeter> getPendingSmartMeters() {
         return mongoTemplate.find(Query.query(Criteria.where("enrollStatus").is("pending")), SmartMeter.class);
     }
-
     public void setSmartMeterStatus(String smartMeterId, String status) {
         mongoTemplate.findAndModify(Query.query(Criteria.where("id").is(smartMeterId)), new Update().set("enrollStatus", status), SmartMeter.class);
     }
-
     public List<SmartMeter> getUserSmartMeter(String userId) {
         return mongoTemplate.stream(Query.query(Criteria.where("userId").is(userId)), SmartMeter.class).collect(Collectors.toList());
     }
-
-    public void switchProvider(String smartMeterId, String providerName) {
-        mongoTemplate.findAndModify(Query.query(Criteria.where("id").is(smartMeterId)), new Update().set("provider", providerName), SmartMeter.class);
+    public SmartMeter getSmartMeterById(String smartMeterId) {
+        return mongoTemplate.findOne(Query.query(Criteria.where("id").is(smartMeterId)), SmartMeter.class);
     }
 }

@@ -34,4 +34,10 @@ public class ProviderController {
         return providerService.getAllProvider();
     }
 
+    @PutMapping("/{smartMeterId}/{providerName}")
+    public void switchProvider(@PathVariable("providerName") String providerName,
+                               @PathVariable("smartMeterId") String smartMeterId) {
+        providerService.switchProvider(smartMeterId, providerName);
+    }
+
 }

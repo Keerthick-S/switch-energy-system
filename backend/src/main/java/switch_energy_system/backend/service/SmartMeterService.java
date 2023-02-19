@@ -32,8 +32,8 @@ public class SmartMeterService {
         smartMeterReadingService.setSmartMeterStatus(smartMeterId, false);
     }
 
-    public void newSmartMeter(String userId, String userName) {
-        smartMeterRepo.newSmartMeter(userId, getEnableProviderName(), userName);
+    public void newSmartMeter(String userId, String name) {
+        smartMeterRepo.newSmartMeter(userId, getEnableProviderName(), name);
     }
 
     public String getEnableProviderName() {
@@ -52,14 +52,11 @@ public class SmartMeterService {
         smartMeterRepo.setSmartMeterStatus(id , status);
         smartMeterReadingService.setSmartMeterStatus(id, false);
     }
-    public List<SmartMeter> getUserSmartMeter(String email) {
-        String userId = userRepo.getUserById(email).getId();
+    public List<SmartMeter> getUserSmartMeter(String userId) {
         return smartMeterRepo.getUserSmartMeter(userId);
     }
     public void createSmartMeter(SmartMeter smartMeter) {
         smartMeterRepo.newSmartMeter(smartMeter.getUserId(), smartMeter.getProvider(), smartMeter.getUserName());
     }
-    public void switchProvider(String smartMeterId, String providerName) {
-        smartMeterRepo.switchProvider(smartMeterId, providerName);
-    }
+
 }

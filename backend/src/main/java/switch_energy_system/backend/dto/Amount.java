@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Token {
-    private String token;
-    private String role;
-    private String userId;
+public class Amount {
+    private double reading;
+    private double amount;
+    private String smartMeterId;
 }
