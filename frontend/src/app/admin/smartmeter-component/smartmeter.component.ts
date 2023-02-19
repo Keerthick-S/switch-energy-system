@@ -10,6 +10,9 @@ import { SmartmeterService } from "../service/smartmeter.service";
 
 export class SmartmeterComponent implements OnInit{
 
+    page: number = 1;
+    limit: number = 6;
+
     smartmeters : SmartMeter[] = [];
 
     constructor(private smartmeterService : SmartmeterService) {

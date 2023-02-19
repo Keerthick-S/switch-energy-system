@@ -21,8 +21,9 @@ export class LoginComponent{
 
     authenticate() : void {       
         this.authService.getToken(this.loginForm.value).subscribe(res => {
-            console.log(res);
-            sessionStorage.setItem("token", res.token);
+            sessionStorage.setItem('token', res.token);
+            sessionStorage.setItem('role', res.role);
+            sessionStorage.setItem('userId', res.userId);
          })
     }
 }

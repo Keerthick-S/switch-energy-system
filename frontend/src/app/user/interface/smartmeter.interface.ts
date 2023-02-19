@@ -3,3 +3,9 @@ export interface SmartMeter {
     provider : string;
     reading : number
 }
+
+export interface SmartMeterDetails {
+    reading : number;
+    amount : number;
+    smartMeterId : string
+}

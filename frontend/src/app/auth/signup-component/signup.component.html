@@ -1,75 +1,41 @@
-<!-- <div class="main-container">
+<div class="main-container">
     <div class="container">
-        <p class="user-login">USER SIGNUP</p>
-        <form [formGroup]="userDetails" [onSubmit]="onSubmit()">
-            <div class="input">   
-                <input type="text" class="form-control" placeholder="User Name">
-            </div>
-            <div class="input">   
-                <input type="text" class="form-control" placeholder="PhoneNumber">
-            </div>
-            <div class="input">   
-                <input type="text" class="form-control" placeholder="Email">
-            </div>
-            <div class="input">   
-                <input type="password" class="form-control" placeholder="Password">
-            </div>
-            <div class="input">   
-                <input type="password" class="form-control" placeholder="Confirm Password">
-            </div>
-            <div class="input">   
-                <button type="submit" class="form-control submit">Signup</button>
-            </div>
-        </form>
-        <div class="or">______________ OR ______________</div>
-        <div class="signup">Already have Account?<a href="/login" class="register">  Login <i class="fa-solid fa-arrow-right"></i></a></div>
-    </div>
-</div> -->
-
-
-
-
-
-<div>
-    <div>
-        <form autocomplete="off">
-            <div>
-                <mat-form-field class="input-field">
-                    <mat-label>User Name</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field class="input-field">
-                    <mat-label>Phone Number</mat-label>
-                    <input matInput>
+        <p class="login">SIGNUP</p>
+        <form [formGroup]="loginForm" (ngSubmit)="createUser()">
+            <div class="form-div">
+                <mat-form-field class="input">
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput formControlName="name" required>
+                    <mat-error>Enter Valid Name</mat-error>
                 </mat-form-field>
             </div>
-            <div>
-                <mat-form-field class="input-field">
+            <div class="form-div">
+                <mat-form-field class="input">
                     <mat-label>Email</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field class="input-field">
-                    <mat-label>Address</mat-label>
-                    <textarea matInput></textarea>
-                </mat-form-field>
+                    <input type="email" matInput formControlName="email" required>
+                    <mat-error>Enter Valid Email</mat-error>
+                  </mat-form-field>
             </div>
-            <div>
-                <mat-form-field class="input-field">
+            <div class="form-div">
+                <mat-form-field class="input">
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput formControlName="phoneNumber" required>
+                    <mat-error>Enter Valid Phone Number</mat-error>
+                  </mat-form-field>
+            </div>
+            <div class="form-div">
+                <mat-form-field class="input">
                     <mat-label>Password</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field class="input-field">
-                    <mat-label>Confirm Password</mat-label>
-                    <input matInput>
-                </mat-form-field>
+                    <input type="password" matInput formControlName="password" required>
+                    <mat-error>Password is Required</mat-error>
+                  </mat-form-field>
+            </div>
+            <div class="form-div">
+                <button type="submit" [disabled]="!loginForm.valid" class="button">Signup</button>
             </div>
         </form>
     </div>
 </div>
-
-
-
-
 
 
 

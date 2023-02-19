@@ -50,3 +50,67 @@ hr {
     text-decoration: none;
     color: white;
 } */
+
+
+
+
+.main-container {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right bottom, #c0bebe, #9d9598, #9d96a0, #9798a9, #8b9daf);    position: fixed;
+}
+
+.container {
+    width: 30%;
+    height: 85%;
+    background-color: white;
+    margin-top: 3%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.form-div{
+    margin-top: 20px;
+    width: 70%;
+    margin-left: 15%;
+}
+
+.login {
+    font-size: 30px;
+    font-weight: 500;
+    font-family: Chalkduster;
+    padding-top: 40px;
+    padding-bottom : 40px;
+}
+
+.input {
+    width: 250px;
+}
+
+.button {
+    width: 90%;
+    height: 35px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+    border-radius: 10px;
+    margin-top: 20px;
+    background: #000428;
+    background: -webkit-linear-gradient(to right, #004e92, #000428);
+    background: linear-gradient(to right, #004e92, #000428);
+}
+
+.signup-control {
+    margin-top: 40px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.button:disabled {
+    cursor: not-allowed;
+}

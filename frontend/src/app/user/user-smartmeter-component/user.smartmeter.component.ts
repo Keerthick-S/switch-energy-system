@@ -1,8 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
+import { AuthService } from "src/app/auth/service/auth.service";
 import { AddSmartmeterComponent } from "../add-smartmeter-component/add.smartmeter.component";
 import { SmartMeter } from "../interface/smartmeter.interface";
 import { SmartMeterService } from "../service/smartmeter.service";
+import { ViewSmartmeterDialogComponent } from "../view-smartmeter-dialog-component/view.smartmeter.dialog.component";
 
 
 @Component({
@@ -15,11 +17,13 @@ export class UserSmartmeterComponent implements OnInit {
 
     smartMeters : SmartMeter[] = [];
 
-    constructor(private smartmeterService : SmartMeterService, public dialog: MatDialog) {
+    constructor(private smartmeterService : SmartMeterService, public dialog: MatDialog, private authService : AuthService) {
     }
 
     ngOnInit(): void {
-        this.smartmeterService.getUserSmartmeter('anu@gmail.com').subscribe(res => {
+        let userId = sessionStorage.getItem('userId');
+        console.log(userId);        
+        this.smartmeterService.getUserSmartmeter(userId).subscribe(res => {
             this.smartMeters = res;
         })
     }
@@ -32,5 +36,15 @@ export class UserSmartmeterComponent implements OnInit {
           this.smartmeterService.switchSmartMeter(smartMeterId, result).subscribe();
         }
       });
+    }
+
+    viewSmartMeter(smartmeter : string) : void {
+        this.smartmeterService.viewSmartMeter(smartmeter).subscribe(res => {
+          const dialogRef = this.dialog.open(ViewSmartmeterDialogComponent, {
+            data: res,
+          });
+      
+          dialogRef.afterClosed().subscribe();
+        })
     }
 }

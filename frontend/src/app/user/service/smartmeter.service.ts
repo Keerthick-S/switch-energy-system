@@ -15,7 +15,8 @@ export class SmartMeterService {
     constructor(private http : HttpClient) {
     }
 
-    getUserSmartmeter(email : string) : Observable<SmartMeter[]> {
+    getUserSmartmeter(email : string | null) : Observable<SmartMeter[]> {
+        console.log(email);
         return this.http.get<SmartMeter[]>(`${this.BASE_URL}/${email}`);
     }
 
@@ -25,5 +26,9 @@ export class SmartMeterService {
 
     switchSmartMeter(smartMeterId : string, providerName : string) : Observable<object> {
         return this.http.put(`${this.BASE_URL}/${providerName}/${smartMeterId}`, null);
+    }
+
+    viewSmartMeter(smartMeterId : string) : Observable<any> {
+        return this.http.get<any>(`${this.BASE_URL}/view/${smartMeterId}`);
     }
 }

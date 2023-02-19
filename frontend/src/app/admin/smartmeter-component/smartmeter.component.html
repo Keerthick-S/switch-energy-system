@@ -3,7 +3,7 @@
     <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">S.NO</th>
+            <!-- <th scope="col">S.NO</th> -->
             <th scope="col">SMART METER ID</th>
             <th scope="col">USER</th>
             <th scope="col">PROVIDER</th>
@@ -11,9 +11,9 @@
             <th scope="col">REJECT</th>
           </tr>
         </thead>
-        <tbody *ngFor="let smartmeter of smartmeters;index as i">
+        <tbody *ngFor="let smartmeter of smartmeters | paginate:{itemsPerPage:limit,currentPage:page};index as i">
           <tr>
-            <th scope="row">{{i+1}}</th>
+            <!-- <th scope="row">{{i+1}}</th> -->
             <td>{{smartmeter.id}}</td>
             <td>{{smartmeter.userName}}</td>
             <td>{{smartmeter.provider}}</td>
@@ -30,4 +30,7 @@
           </tr>
         </tbody>
       </table>
+      <div class="pagination">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div>
 </div>

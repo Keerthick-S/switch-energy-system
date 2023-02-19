@@ -7,8 +7,7 @@
             <th scope="col">SMARTMETER ID</th>
             <th scope="col">PROVIDER</th>
             <th scope="col">SWITCH PROVIDER</th>
-            <th scope="col">READING</th>
-            <th scope="col">TOTAL AMOUNTS</th>
+            <th scope="col">VIEW DETAILS</th>
           </tr>
         </thead>
         <tbody *ngFor="let smartmeter of smartMeters;index as i">
@@ -21,8 +20,9 @@
                 Switch
               </button>
             </td>
-            <td>{{smartmeter.reading}}</td>
-            <td></td>
+            <td><button class="btn btn-light" (click)="viewSmartMeter(smartmeter.id)">
+              View
+            </button></td>
           </tr>
         </tbody>
       </table>

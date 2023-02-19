@@ -10,8 +10,6 @@ import { UserModule } from './user/user.module';
 import { MaterialModule } from './material/material.module';
 import { TokenInterceptor } from './auth/service/token.interceptor.service';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -17,7 +17,7 @@
                   </mat-form-field>
             </div>
             <div class="form-div">
-                <button type="submit" class="button">Login</button>
+                <button type="submit" [disabled]="!loginForm.valid" class="button">Login</button>
             </div>
         </form>
         <p class="signup-control">Not a User?<a href=""> Signup now</a></p>

@@ -8,6 +8,7 @@ import { ProviderComponent } from './provider-component/provider.component';
 import { SmartmeterComponent } from './smartmeter-component/smartmeter.component';
 import { ToolbarComponent } from './toolbar-component/toolbar.component';
 import { MaterialModule } from '../material/material.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MaterialModule } from '../material/material.module';
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class AdminModule { }
