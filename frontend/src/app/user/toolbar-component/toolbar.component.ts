@@ -52,4 +52,9 @@ export class ToolbarComponent implements OnInit {
         this.user = res;
       })
     }
+
+    logout() : void {
+      sessionStorage.clear();
+      this.router.navigateByUrl('login');
+    }
 }  

@@ -3,6 +3,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { AuthService } from "src/app/auth/service/auth.service";
 import { AddSmartmeterComponent } from "../add-smartmeter-component/add.smartmeter.component";
 import { SmartMeter } from "../interface/smartmeter.interface";
+import { ProviderService } from "../service/provider.service";
 import { SmartMeterService } from "../service/smartmeter.service";
 import { ViewSmartmeterDialogComponent } from "../view-smartmeter-dialog-component/view.smartmeter.dialog.component";
 
@@ -17,15 +18,11 @@ export class UserSmartmeterComponent implements OnInit {
 
     smartMeters : SmartMeter[] = [];
 
-    constructor(private smartmeterService : SmartMeterService, public dialog: MatDialog, private authService : AuthService) {
+    constructor(private smartmeterService : SmartMeterService,private providerService : ProviderService, public dialog: MatDialog, private authService : AuthService) {
     }
 
     ngOnInit(): void {
-        let userId = sessionStorage.getItem('userId');
-        console.log(userId);        
-        this.smartmeterService.getUserSmartmeter(userId).subscribe(res => {
-            this.smartMeters = res;
-        })
+        this.getUserSmartMeter();
     }
 
     switchSmartMeter(smartMeterId : string) : void {
@@ -33,7 +30,9 @@ export class UserSmartmeterComponent implements OnInit {
   
       dialogRef.afterClosed().subscribe(result => {
         if(result) {
-          this.smartmeterService.switchSmartMeter(smartMeterId, result).subscribe();
+          this.providerService.switchSmartMeterProvider(smartMeterId, result).subscribe(res => {
+            this.getUserSmartMeter();
+          });
         }
       });
     }
@@ -45,6 +44,13 @@ export class UserSmartmeterComponent implements OnInit {
           });
       
           dialogRef.afterClosed().subscribe();
+        })
+    }
+
+    getUserSmartMeter() : void {
+      let userId = sessionStorage.getItem('userId');    
+        this.smartmeterService.getUserSmartmeter(userId).subscribe(res => {
+            this.smartMeters = res;
         })
     }
 }

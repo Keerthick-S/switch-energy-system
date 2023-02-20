@@ -16,16 +16,11 @@ export class SmartMeterService {
     }
 
     getUserSmartmeter(email : string | null) : Observable<SmartMeter[]> {
-        console.log(email);
         return this.http.get<SmartMeter[]>(`${this.BASE_URL}/${email}`);
     }
 
     addSmartMeter(userDetail : userDetails) : Observable<object> {
         return this.http.post<object>(`${this.BASE_URL}`, userDetail);
-    }
-
-    switchSmartMeter(smartMeterId : string, providerName : string) : Observable<object> {
-        return this.http.put(`${this.BASE_URL}/${providerName}/${smartMeterId}`, null);
     }
 
     viewSmartMeter(smartMeterId : string) : Observable<any> {
