@@ -5,11 +5,13 @@ import { AddSmartmeterComponent } from "../add-smartmeter-component/add.smartmet
 import { User, userDetails } from "../interface/user.interface";
 import { SmartMeterService } from "../service/smartmeter.service";
 import { UserService } from "../service/user.service";
+import { UserSmartmeterComponent } from "../user-smartmeter-component/user.smartmeter.component";
 
 @Component({
     selector : 'toolbar-component',
     templateUrl : './toolbar.component.html',
-    styleUrls : ['./toolbar.component.css']
+    styleUrls : ['./toolbar.component.css'],
+    providers : [UserSmartmeterComponent]
 })
 
 export class ToolbarComponent implements OnInit {
@@ -25,7 +27,7 @@ export class ToolbarComponent implements OnInit {
       provider: ""
     }
 
-    constructor(private router : Router ,private smartmeterService : SmartMeterService, private userService : UserService , public dialog: MatDialog) {
+    constructor(private router : Router ,private smartmeterService : SmartMeterService, private userService : UserService , public dialog: MatDialog, private userSmartmeter : UserSmartmeterComponent) {
     }
 
     ngOnInit(): void {
@@ -41,19 +43,20 @@ export class ToolbarComponent implements OnInit {
           this.userDetail.userName = this.user.name;
           this.userDetail.provider = result;
           this.smartmeterService.addSmartMeter(this.userDetail).subscribe(res => {
-            this.getUserSmartMeters();
+            this.userSmartmeter.getUserSmartMeter();
           });
         }
       });
     }
 
     getUserSmartMeters() : void {
-      this.userService.getUser("anu@gmail.com").subscribe(res => {
+      const userId = sessionStorage.getItem('userId');      
+      this.userService.getUser(userId).subscribe(res => {
         this.user = res;
       })
     }
 
-    logout() : void {
+    userLogout() : void {
       sessionStorage.clear();
       this.router.navigateByUrl('login');
     }

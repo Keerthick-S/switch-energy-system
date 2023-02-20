@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { SmartMeter } from "../interface/smartmeter.interface";
 import { userDetails } from "../interface/user.interface";
+import { UserSmartmeterComponent } from "../user-smartmeter-component/user.smartmeter.component";
 
 @Injectable({
     providedIn : 'root'

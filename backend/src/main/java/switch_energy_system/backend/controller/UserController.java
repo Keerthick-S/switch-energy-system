@@ -25,5 +25,8 @@ public class UserController {
         return userService.getUserById(email);
     }
 
-
+    @GetMapping("/get/{userId}")
+    public User getUser(@PathVariable String userId) {
+        return userService.getUser(userId);
+    }
 }

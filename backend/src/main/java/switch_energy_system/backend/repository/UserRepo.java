@@ -30,4 +30,7 @@ public class UserRepo {
     public User getUserById(String userName) {
         return mongoTemplate.findOne(Query.query(Criteria.where("userName").is(userName)), User.class);
     }
+    public User getUser(String userId) {
+        return mongoTemplate.findOne(Query.query(Criteria.where("id").is(userId)), User.class);
+    }
 }

@@ -30,7 +30,4 @@ export class AddSmartmeterComponent implements OnInit {
     onNoClick(): void {
     this.dialogRef.close();
     }
-
-
-
 }

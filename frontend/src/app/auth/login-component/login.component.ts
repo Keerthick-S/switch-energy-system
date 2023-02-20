@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { AuthService } from "../service/auth.service";
 import { TokenInterceptor } from "../service/token.interceptor.service";
 
@@ -11,7 +12,7 @@ import { TokenInterceptor } from "../service/token.interceptor.service";
 
 export class LoginComponent{
     
-    constructor(private authService: AuthService) {
+    constructor(private authService: AuthService, private router : Router) {
     }
 
     loginForm = new FormGroup({
@@ -24,6 +25,7 @@ export class LoginComponent{
             sessionStorage.setItem('token', res.token);
             sessionStorage.setItem('role', res.role);
             sessionStorage.setItem('userId', res.userId);
+            this.router.navigateByUrl('user');
          })
     }
 }
