@@ -1,9 +1,8 @@
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import Swal from "sweetalert2";
 import { AuthService } from "../service/auth.service";
-import { TokenInterceptor } from "../service/token.interceptor.service";
-
 @Component({
     selector : 'app-login-component',
     templateUrl : './login.component.html',
@@ -21,11 +20,17 @@ export class LoginComponent{
     })
 
     authenticate() : void {       
-        this.authService.getToken(this.loginForm.value).subscribe(res => {
-            sessionStorage.setItem('token', res.token);
-            sessionStorage.setItem('role', res.role);
-            sessionStorage.setItem('userId', res.userId);
-            this.router.navigateByUrl('user');
-         })
+        this.authService.getToken(this.loginForm.value).subscribe({
+            next : (res) => {
+                sessionStorage.setItem('token', res.token);
+                sessionStorage.setItem('role', res.role);
+                console.log(sessionStorage.getItem('role'));
+                sessionStorage.setItem('userId', res.userId);
+                this.router.navigateByUrl('user');
+            },
+            error : (res) => {
+                Swal.fire('Invalid UserName and Password');
+            }
+        })
     }
 }

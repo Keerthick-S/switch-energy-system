@@ -30,27 +30,33 @@ export class UserSmartmeterComponent implements OnInit {
   
       dialogRef.afterClosed().subscribe(result => {
         if(result) {
-          this.providerService.switchSmartMeterProvider(smartMeterId, result).subscribe(res => {
-            this.getUserSmartMeter();
+          this.providerService.switchSmartMeterProvider(smartMeterId, result).subscribe({
+            next : (res) => {
+              this.getUserSmartMeter();
+            }
           });
         }
       });
     }
 
     viewSmartMeter(smartmeter : string) : void {
-        this.smartmeterService.viewSmartMeter(smartmeter).subscribe(res => {
-          const dialogRef = this.dialog.open(ViewSmartmeterDialogComponent, {
-            data: res,
-          });
-      
-          dialogRef.afterClosed().subscribe();
+        this.smartmeterService.viewSmartMeter(smartmeter).subscribe({
+          next : (res) => {
+            const dialogRef = this.dialog.open(ViewSmartmeterDialogComponent, {
+              data: res,
+            });
+        
+            dialogRef.afterClosed().subscribe();
+          }
         })
     }
 
     getUserSmartMeter() : void {
       let userId = sessionStorage.getItem('userId');    
-        this.smartmeterService.getUserSmartmeter(userId).subscribe(res => {
+        this.smartmeterService.getUserSmartmeter(userId).subscribe({
+          next : (res) => {
             this.smartMeters = res;
+          }
         })
     }
 }

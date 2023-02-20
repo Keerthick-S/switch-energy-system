@@ -14,7 +14,7 @@ export class ProviderService {
     }
 
     getProvider() : Observable<Provider[]> {
-        return this.http.get<Provider[]>(`${this.BASE_URL}`);
+        return this.http.get<Provider[]>(`${this.BASE_URL}/enabled`);
     }
 
     switchSmartMeterProvider(smartMeterId : string, providerName : string) : Observable<object> {

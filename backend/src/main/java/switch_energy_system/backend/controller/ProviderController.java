@@ -33,7 +33,10 @@ public class ProviderController {
     public List<Provider> getAllProvider() {
         return providerService.getAllProvider();
     }
-
+    @GetMapping("/enabled")
+    public List<Provider> getEnabledProvider() {
+        return providerService.getEnabledProvider();
+    }
     @PutMapping("/{smartMeterId}/{providerName}")
     public void switchProvider(@PathVariable("providerName") String providerName,
                                @PathVariable("smartMeterId") String smartMeterId) {

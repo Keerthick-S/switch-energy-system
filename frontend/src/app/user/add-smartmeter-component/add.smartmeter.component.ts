@@ -22,8 +22,10 @@ export class AddSmartmeterComponent implements OnInit {
     constructor(private providerService : ProviderService,public dialogRef: MatDialogRef<ToolbarComponent>) {}
 
     ngOnInit(): void {
-        this.providerService.getProvider().subscribe(res => {
-            this.providers = res;
+        this.providerService.getProvider().subscribe({
+            next : (res) => {
+                this.providers = res;
+            }
         })        
     }
     

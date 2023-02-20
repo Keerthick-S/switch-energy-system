@@ -37,4 +37,8 @@ public class ProviderRepo {
         mongoTemplate.findAndModify(Query.query(Criteria.where("id").is(smartMeterId)), new Update().set("provider", providerName), SmartMeter.class);
     }
 
+    public List<Provider> getEnabledProvider() {
+        return mongoTemplate.find(Query.query(Criteria.where("isEnable").is(true)), Provider.class);
+    }
+
 }

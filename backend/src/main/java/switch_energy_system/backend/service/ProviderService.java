@@ -35,5 +35,8 @@ public class ProviderService {
     public void switchProvider(String smartMeterId, String providerName) {
         providerRepo.switchProvider(smartMeterId, providerName);
     }
+    public List<Provider> getEnabledProvider() {
+        return providerRepo.getEnabledProvider();
+    }
 
 }

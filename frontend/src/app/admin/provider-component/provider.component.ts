@@ -18,8 +18,10 @@ export class ProviderComponent {
     }
 
     ngOnInit(): void {
-        this.providerService.getAllProviders().subscribe(res => {
-            this.providers = res;
+        this.providerService.getAllProviders().subscribe({
+            next : (res) => {
+                this.providers = res;
+            }
         })
     }
     

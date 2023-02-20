@@ -29,8 +29,10 @@ export class SmartmeterComponent implements OnInit{
     }
 
     getSmartMeters() : void {
-        this.smartmeterService.getPendingSmartmeter().subscribe(res => {
-            this.smartmeters = res;  
+        this.smartmeterService.getPendingSmartmeter().subscribe({
+            next : (res) => {
+                this.smartmeters = res;
+            }
         })
     }
 }

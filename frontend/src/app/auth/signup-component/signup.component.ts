@@ -33,11 +33,13 @@ export class SignupComponent {
                 this.login.userName = this.loginForm.value.email;
                 this.login.password = this.loginForm.value.password;
 
-                this.authService.getToken(this.login).subscribe(res => {
-                    sessionStorage.setItem('token', res.token);
-                    sessionStorage.setItem('role', res.role);
-                    sessionStorage.setItem('userId', res.userId);
-                    this.router.navigateByUrl('/user')
+                this.authService.getToken(this.login).subscribe({
+                    next : (res) => {
+                        sessionStorage.setItem('token', res.token);
+                        sessionStorage.setItem('role', res.role);
+                        sessionStorage.setItem('userId', res.userId);
+                        this.router.navigateByUrl('/user')
+                    }
                 });
             }
         })

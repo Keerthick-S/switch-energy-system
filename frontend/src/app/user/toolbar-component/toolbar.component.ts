@@ -42,8 +42,10 @@ export class ToolbarComponent implements OnInit {
           this.userDetail.userId = this.user.id;
           this.userDetail.userName = this.user.name;
           this.userDetail.provider = result;
-          this.smartmeterService.addSmartMeter(this.userDetail).subscribe(res => {
-            this.userSmartmeter.getUserSmartMeter();
+          this.smartmeterService.addSmartMeter(this.userDetail).subscribe({
+            next : (res) => {
+              this.userSmartmeter.getUserSmartMeter();
+            }
           });
         }
       });
@@ -51,8 +53,10 @@ export class ToolbarComponent implements OnInit {
 
     getUserSmartMeters() : void {
       const userId = sessionStorage.getItem('userId');      
-      this.userService.getUser(userId).subscribe(res => {
-        this.user = res;
+      this.userService.getUser(userId).subscribe({
+        next : (res) => {
+          this.user = res;
+        }
       })
     }
 
