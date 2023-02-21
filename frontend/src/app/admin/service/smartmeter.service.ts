@@ -19,6 +19,6 @@ export class SmartmeterService{
     }
 
     setSmartMeterStatus(id : string, status : string) : Observable<Object>{
-        return this.http.put<Object>(`${this.BASE_URL}${id}/${status}`, null);
+        return this.http.put<Object>(`${this.BASE_URL}${status}/${id}`, null);
     }
 }

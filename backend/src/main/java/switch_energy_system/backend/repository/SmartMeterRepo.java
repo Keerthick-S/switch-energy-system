@@ -28,7 +28,7 @@ public class SmartMeterRepo {
         mongoTemplate.findAndModify(Query.query(Criteria.where("userId").is(userId)), new Update().set("userId","").set("enrollStatus", "rejected"), SmartMeter.class);
     }
     public void switchSmartMeter(String providerName, String variousProvider) {
-        mongoTemplate.findAndModify(Query.query(Criteria.where("provider").is(providerName)), new Update().set("provider",variousProvider), SmartMeter.class);
+        mongoTemplate.updateMulti(Query.query(Criteria.where("provider").is(providerName)), new Update().set("provider",variousProvider), SmartMeter.class);
     }
     public List<SmartMeter> getPendingSmartMeters() {
         return mongoTemplate.find(Query.query(Criteria.where("enrollStatus").is("pending")), SmartMeter.class);

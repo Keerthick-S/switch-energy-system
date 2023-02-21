@@ -29,7 +29,7 @@ public class SmartMeterController {
         smartMeterService.setSmartMeterStatus(id, "approved");
     }
 
-    @PutMapping("/rejected/{id}")
+    @PutMapping("/reject/{id}")
     public void smartMeterSetRejectStatus(@PathVariable("id") String id) {
         smartMeterService.setSmartMeterStatus(id, "rejected");
     }
